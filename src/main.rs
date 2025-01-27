@@ -7,9 +7,9 @@ fn handle_client(mut stream: TcpStream) -> io::Result<()> {
     let request_line = buf_reader.lines().next().unwrap().unwrap();
     
     let (status_line, filename) = if request_line == "GET / HTTP/1.1" {
-        ("HTTP/1.1 200 OK", "home.html")
+        ("HTTP/1.1 200 OK", "docs/home.html")
     } else {
-        ("HTTP/1.1 404 NOT FOUND", "404.html")
+        ("HTTP/1.1 404 NOT FOUND", "docs/404.html")
     };
     
     let contents = fs::read_to_string(filename)?;
